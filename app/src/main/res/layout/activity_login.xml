@@ -52,14 +52,13 @@
         android:layout_marginEnd="30dp"
         android:text="Press to login" />
 
-    <TextView
-        android:id="@+id/tv_register"
+    <Button
+        android:id="@+id/btn_go_to_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_login"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Go to register page"
-        android:textSize="18sp" />
+        android:layout_marginTop="32dp"
+        android:text="Go to Register" />
 
 </RelativeLayout>
