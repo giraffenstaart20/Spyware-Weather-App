@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
 
             if (db.checkUser(name, password)) {
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, WeatherActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
