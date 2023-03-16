@@ -21,11 +21,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+
         nameEditText = findViewById(R.id.et_name)
         passwordEditText = findViewById(R.id.et_password)
         loginButton = findViewById(R.id.btn_login)
         registerButton = findViewById(R.id.btn_go_to_register)
-
         db = DatabaseHelper(this)
 
         loginButton.setOnClickListener {
