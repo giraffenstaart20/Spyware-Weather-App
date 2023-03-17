@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "366378624811",
-    "project_id": "loginregistration-fcefa",
-    "storage_bucket": "loginregistration-fcefa.appspot.com"
+    "project_number": "723912720912",
+    "project_id": "loginregistration-c93a4",
+    "storage_bucket": "loginregistration-c93a4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:366378624811:android:06c506565f02caf292876e",
+        "mobilesdk_app_id": "1:723912720912:android:9018aeff353e15e7de8095",
         "android_client_info": {
           "package_name": "com.example.loginregistration"
         }
       },
       "oauth_client": [
         {
-          "client_id": "366378624811-3sj3id84r2j4n3mgfp3ulgrppedk2v79.apps.googleusercontent.com",
+          "client_id": "723912720912-vbn6otltr102aik70h6j00n4rcji72vc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBed0X9sk56ZuP49E713O20KzhZlFKHYwg"
+          "current_key": "AIzaSyCendPv1_xSWxVRUcBn91P1t99-zcwrqsw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "366378624811-3sj3id84r2j4n3mgfp3ulgrppedk2v79.apps.googleusercontent.com",
+              "client_id": "723912720912-vbn6otltr102aik70h6j00n4rcji72vc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

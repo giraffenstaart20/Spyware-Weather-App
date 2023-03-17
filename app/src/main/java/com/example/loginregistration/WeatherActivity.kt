@@ -20,6 +20,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import org.json.JSONObject
 import java.net.URL
 import java.text.SimpleDateFormat
@@ -28,6 +33,12 @@ import kotlin.math.log
 
 
 class WeatherActivity : AppCompatActivity() {
+
+    //firebase
+    val database = Firebase.database
+    val myRef = database.getReference("users")
+
+
     //location
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
@@ -37,6 +48,7 @@ class WeatherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather)
+
         //getting username from login
         val username = intent.getStringExtra("username")
         println(username)
@@ -73,19 +85,28 @@ class WeatherActivity : AppCompatActivity() {
             return
         }
         val location = fusedLocationProviderClient.lastLocation
-        println("Before addOnSuccessListener")
         location.addOnSuccessListener { loc ->
-            println("Inside addOnSuccessListener")
             if(loc!=null){
                 val latitude = loc.latitude
                 val longitude = loc.longitude
                 println("Latitude: $latitude, Longitude: $longitude")
+                myRef.setValue("Hello, World2!")
+                //save the user's location and username to Firebase
+                //generate unique user ID
+                val userId = myRef.push().key ?: return@addOnSuccessListener
+
+                //getting username from login
+                val username = intent.getStringExtra("username") ?: "Unknown"
+
+                //create User object
+                val user = User(username, latitude, longitude)
+
+                //store user's data in Firebase
+                myRef.child(userId).setValue(user)
             }else{
                 println("Failed")
             }
         }
-        println("After addOnSuccessListener")
-
     }
 
 
