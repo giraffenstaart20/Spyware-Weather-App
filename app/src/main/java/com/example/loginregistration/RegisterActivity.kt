@@ -9,9 +9,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.loginregistration.databinding.ActivityLoginBinding
+import com.google.firebase.database.DatabaseReference
 
 
 class RegisterActivity : AppCompatActivity() {
+
     private lateinit var nameEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var registerButton: Button

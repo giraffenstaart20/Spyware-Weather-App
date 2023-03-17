@@ -8,8 +8,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.loginregistration.databinding.ActivityLoginBinding
+import com.google.firebase.database.DatabaseReference
 
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var nameEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var loginButton: Button
@@ -20,7 +23,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
 
         nameEditText = findViewById(R.id.et_name)
         passwordEditText = findViewById(R.id.et_password)
@@ -35,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
             if (db.checkUser(name, password)) {
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, WeatherActivity::class.java)
+                intent.putExtra("username", name)
                 startActivity(intent)
                 finish()
             } else {
