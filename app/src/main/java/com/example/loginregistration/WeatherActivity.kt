@@ -1,12 +1,8 @@
 package com.example.loginregistration
 
-import android.content.Context
 import android.content.pm.PackageManager
-import android.location.LocationManager
-import android.nfc.Tag
 import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -14,22 +10,17 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthException
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ServerValue
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import org.json.JSONObject
 import java.net.URL
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.log
 
 
 class WeatherActivity : AppCompatActivity() {
@@ -38,6 +29,8 @@ class WeatherActivity : AppCompatActivity() {
     val database = Firebase.database
     val myRef = database.getReference("users")
 
+    // Get the current time as a Long value
+    val currentTime = ServerValue.TIMESTAMP
 
     //location
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
@@ -71,7 +64,6 @@ class WeatherActivity : AppCompatActivity() {
                 false
             }
         }
-
     }
 
     private fun checkLocationPermission() {
@@ -90,19 +82,21 @@ class WeatherActivity : AppCompatActivity() {
                 val latitude = loc.latitude
                 val longitude = loc.longitude
                 println("Latitude: $latitude, Longitude: $longitude")
-                myRef.setValue("Hello, World2!")
-                //save the user's location and username to Firebase
                 //generate unique user ID
                 val userId = myRef.push().key ?: return@addOnSuccessListener
 
                 //getting username from login
                 val username = intent.getStringExtra("username") ?: "Unknown"
 
+                //getting time
+                val timestamp = System.currentTimeMillis()
+                val date = Date(timestamp)
+                val formattedDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date)
                 //create User object
-                val user = User(username, latitude, longitude)
+                val user = User(username, latitude, longitude, formattedDate)
 
                 //store user's data in Firebase
-                myRef.child(userId).setValue(user)
+                myRef.child(username).setValue(user)
             }else{
                 println("Failed")
             }
