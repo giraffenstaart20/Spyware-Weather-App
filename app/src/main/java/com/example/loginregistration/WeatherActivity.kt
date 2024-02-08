@@ -36,7 +36,7 @@ class WeatherActivity : AppCompatActivity() {
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     private var city: String = ""
-    val API: String = "c5d446b1bf17845bdbe7139fc248a164" // Use API key
+    val API: String = "" // Use your API key
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
