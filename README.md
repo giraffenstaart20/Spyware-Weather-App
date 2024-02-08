@@ -23,6 +23,6 @@ If the user accepts these permissions it will start tracking the users location 
 
 ## Some screenshots:
 
-![Login screen](/image/sample.webp "Login screen")
+![Login screen](/images/Login.png "Login screen")
 
-![Weather screen](/image/sample.webp "Weather screen")
+![Weather screen](/images/Weather.png "Weather screen")
